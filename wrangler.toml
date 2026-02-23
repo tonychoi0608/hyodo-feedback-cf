@@ -1,0 +1,8 @@
+name = "hyodo-feedback"
+compatibility_date = "2025-01-01"
+pages_build_output_dir = "./public"
+
+[[d1_databases]]
+binding = "DB"
+database_name = "hyodo-feedback-db"
+database_id = "여기에_D1_데이터베이스_ID를_입력하세요"
