@@ -35,11 +35,15 @@ export async function onRequestPost(context) {
       });
     }
 
-    const result = await context.env.DB.prepare(
-      'INSERT INTO feedbacks (name, content) VALUES (?, ?) RETURNING *'
-    ).bind(name, content).first();
+    const info = await context.env.DB.prepare(
+      'INSERT INTO feedbacks (name, content) VALUES (?, ?)'
+    ).bind(name, content).run();
 
-    return new Response(JSON.stringify(result), {
+    const inserted = await context.env.DB.prepare(
+      'SELECT * FROM feedbacks WHERE id = ?'
+    ).bind(info.meta.last_row_id).first();
+
+    return new Response(JSON.stringify(inserted), {
       status: 201,
       headers: { 'Content-Type': 'application/json' },
     });
