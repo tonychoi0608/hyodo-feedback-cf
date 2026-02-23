@@ -1,0 +1,9 @@
+{
+  "name": "hyodo-feedback",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "npx wrangler pages dev ./public --d1 DB",
+    "deploy": "npx wrangler pages deploy ./public"
+  }
+}
